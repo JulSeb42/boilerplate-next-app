@@ -25,18 +25,4 @@ class CloudinaryService {
 	/* Prepend route - DO NOT REMOVE */
 }
 
-// const uploadImage = async (file: any) =>
-// 	await http
-// 		.put(generateRoute("UPLOAD_PICTURE"), file, {
-// 			headers: {
-// 				"Content-Type": undefined, // Let browser set multipart/form-data with boundary
-// 			},
-// 		})
-// 		.then(res => res.data)
-// 		.catch(errorHandler)
-
-// export const cloudinaryService = {
-// 	uploadImage,
-// }
-
 export const cloudinaryService = new CloudinaryService()
