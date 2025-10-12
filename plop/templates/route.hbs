@@ -1,0 +1,13 @@
+import { NextResponse } from "next/server"
+import { connectDb } from "lib/server"
+import { {{#if newDirectory}}{{ pascalCase newDirectory }}{{ else }}{{ pascalCase directory }}{{/if}}Model } from "models"
+
+export async function {{ method }}(req: Request) {
+	await connectDb()
+
+	try {
+
+	} catch(err) {
+		
+	}
+}
