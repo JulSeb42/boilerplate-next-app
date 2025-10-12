@@ -30,15 +30,20 @@ export function EditPasswordForm() {
 		const { id, value } = e.target
 		setInputs({ ...inputs, [id]: value })
 
-		// setValidation({
-		// 	...validation,
-		// 	[id]:
-		// 		value.length > 0
-		// 			? passwordRegex.test(value)
-		// 				? true
-		// 				: false
-		// 			: undefined,
-		// })
+		if (
+			validation.oldPassword !== undefined ||
+			validation.newPassword !== undefined
+		) {
+			setValidation({
+				...validation,
+				[id]:
+					value.length > 0
+						? passwordRegex.test(value)
+							? true
+							: false
+						: undefined,
+			})
+		}
 	}
 
 	const handleSubmit = (e: FormEvent) => {

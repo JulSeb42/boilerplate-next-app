@@ -38,7 +38,6 @@ export async function PUT(req: Request) {
 			)
 		}
 
-		// Validate file type
 		if (!file.type.startsWith("image/")) {
 			console.error("❌ Invalid file type:", file.type)
 			return NextResponse.json(
@@ -49,7 +48,6 @@ export async function PUT(req: Request) {
 			)
 		}
 
-		// Validate file size (5MB limit)
 		if (file.size > 5 * 1024 * 1024) {
 			console.error("❌ File too large:", file.size)
 			return NextResponse.json(
@@ -60,11 +58,9 @@ export async function PUT(req: Request) {
 			)
 		}
 
-		// Convert File to Buffer for Cloudinary upload
 		const bytes = await file.arrayBuffer()
 		const buffer = Buffer.from(bytes)
 
-		// Upload to Cloudinary
 		const uploadResult = await new Promise((resolve, reject) => {
 			cloudinary.uploader
 				.upload_stream(

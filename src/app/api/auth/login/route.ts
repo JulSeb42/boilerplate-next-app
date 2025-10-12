@@ -48,20 +48,4 @@ export async function POST(req: Request) {
 	})
 
 	return res
-
-	// try {
-
-	// } catch (err: any) {
-	// 	// console.error(err)
-	// 	// if (err === COMMON_TEXTS.ERRORS.USER_NOT_EXIST) {
-	// 	// 	return NextResponse.json(
-	// 	// 		{ error: err, message: COMMON_TEXTS.ERRORS.USER_NOT_EXIST },
-	// 	// 		{ status: 401 },
-	// 	// 	)
-	// 	// }
-	// 	// return NextResponse.json(
-	// 	// 	{ error: err, message: COMMON_TEXTS.ERRORS.WRONG_PASSWORD },
-	// 	// 	{ status: 401 },
-	// 	// )
-	// }
 }

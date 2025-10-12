@@ -51,11 +51,9 @@ export async function PUT(req: Request) {
 			)
 		}
 
-		// Convert File to Buffer for Cloudinary upload
 		const bytes = await file.arrayBuffer()
 		const buffer = Buffer.from(bytes)
 
-		// Upload to Cloudinary (you'll need to adapt your cloudinary config)
 		const uploadResult = await new Promise((resolve, reject) => {
 			cloudinary.uploader
 				.upload_stream(

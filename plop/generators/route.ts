@@ -111,37 +111,5 @@ export default (plop: NodePlopAPI) => {
 
 			return actions
 		},
-		// actions: data => {
-
-		// 	const actions: Array<ActionType> = [
-
-		// 	]
-
-		// 	if (data?.newDirectory) {
-		// 		// Create new type
-		// 		// create new directory.service.ts
-		// 		actions.push(
-		// 			...[
-		// 				"Creating a new API service & type",
-		// 				{
-		// 					type: "add",
-
-		// 					// type: "add",
-
-		// 				},
-		// 				{
-		// 					type: "add",
-		// 					path: `${CLIENT_PATH}/api/${targetDirectory}.service.ts`,
-		// 					templateFile: `${TEMPLATES_PATH}/service.hbs`,
-		// 				},
-		// 			],
-		// 		)
-		// 	}
-
-		// 	// Add api route => inside <dir>.service.ts, add http.{{ lowerCase method }}(generateRoute("{{ upperCase name }}"))
-		// 	// If new directory create new service
-
-		// 	return []
-		// },
 	})
 }

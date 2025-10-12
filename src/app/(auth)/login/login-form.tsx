@@ -17,8 +17,7 @@ export function LoginForm() {
 	const [isLoading, setIsLoading] = useState(false)
 	const [errorMessage, setErrorMessage] = useState<IErrorMessage>(undefined)
 	const [saveEmail, setSaveEmail] = useState<boolean>(false)
-
-	// Safely load from localStorage after component mounts
+	
 	useEffect(() => {
 		const savedEmail = localStorage.getItem("email")
 		if (savedEmail) {
@@ -33,8 +32,7 @@ export function LoginForm() {
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault()
 		setIsLoading(true)
-
-		// Handle email saving/clearing
+		
 		if (saveEmail) {
 			localStorage.setItem("email", inputs.email)
 		} else {

@@ -5,17 +5,15 @@ export const debugCookies = () => {
 		return
 	}
 
-	// Test setting a cookie to see if it works
 	const testCookieName = "test_cookie_" + Date.now()
 	document.cookie = `${testCookieName}=test_value; path=/`
 
-	// Clean up test cookie
 	document.cookie = `${testCookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`
 }
 
 export const getAllCookies = (): Record<string, string> => {
 	if (typeof document === "undefined") {
-		return {} // Server-side safety
+		return {}
 	}
 
 	const cookies: Record<string, string> = {}
@@ -24,7 +22,6 @@ export const getAllCookies = (): Record<string, string> => {
 		return cookies
 	}
 
-	// Split cookies more reliably - try multiple methods
 	const cookieString = document.cookie.trim()
 	const cookieArray = cookieString.split(/;\s*/)
 
@@ -52,7 +49,7 @@ export const getAllCookies = (): Record<string, string> => {
 
 export const getCookie = (name: string): string | null => {
 	if (typeof document === "undefined") {
-		return null // Server-side safety
+		return null
 	}
 
 	const value = `; ${document.cookie}`
@@ -63,7 +60,6 @@ export const getCookie = (name: string): string | null => {
 	return null
 }
 
-// Alternative method using regex
 export const getAllCookiesRegex = (): Record<string, string> => {
 	if (typeof document === "undefined") {
 		return {}
@@ -71,7 +67,6 @@ export const getAllCookiesRegex = (): Record<string, string> => {
 
 	const cookies: Record<string, string> = {}
 
-	// Use regex to match cookie patterns
 	const cookieRegex = /([^=]+)=([^;]*)/g
 	let match
 
@@ -97,7 +92,7 @@ export const setCookie = (
 	days: number = 7,
 ): void => {
 	if (typeof document === "undefined") {
-		return // Server-side safety
+		return
 	}
 
 	const expires = new Date(Date.now() + days * 864e5).toUTCString()
@@ -106,13 +101,12 @@ export const setCookie = (
 
 export const deleteCookie = (name: string): void => {
 	if (typeof document === "undefined") {
-		return // Server-side safety
+		return
 	}
 
 	document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
 }
 
-// Function to explain why you might not see all cookies
 export const explainCookieVisibility = () => {
 	if (typeof document === "undefined") {
 		return "Running on server - no access to document.cookie"

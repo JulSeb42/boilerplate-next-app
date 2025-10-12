@@ -37,14 +37,6 @@ export function UsersList({ initialUsers, initialPagination }: IUsersList) {
 			console.error("Error loading more users:", err)
 			setError("Failed to load more users")
 		}
-
-		// try {
-		// 	setTimeout(async () => {}, 500)
-		// } catch (err) {
-
-		// } finally {
-		//
-		// }
 	}, [loading, pagination])
 
 	useEffect(() => {

@@ -16,7 +16,7 @@ export const getAllCookiesFromRequest = (
 				const [key, ...v] = c.trim().split("=")
 				return [key, decodeURIComponent(v.join("="))]
 			})
-			.filter(([key]) => key), // Remove empty keys
+			.filter(([key]) => key),
 	)
 }
 

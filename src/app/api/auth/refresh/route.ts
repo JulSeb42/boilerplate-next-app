@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 		res.cookies.set("access_token", newAccess, {
 			httpOnly: true,
 			path: "/",
-			maxAge: 60 * 60, // 1 hour to match access token expiration
+			maxAge: 60 * 60 * 24 * 30,
 		})
 
 		res.cookies.set("auth_status", "authenticated", {
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 			path: "/",
 			sameSite: "lax",
 			secure: process.env.NODE_ENV === "production",
-			maxAge: 60 * 60 * 24 * 30, // 30 days to match refresh token expiration
+			maxAge: 60 * 60 * 24 * 30,
 		})
 
 		return res

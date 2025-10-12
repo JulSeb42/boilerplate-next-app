@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
-import {
-	connectDb,
-	verifyAccessToken,
-	ServerCookies,
-} from "lib/server"
+import { connectDb, verifyAccessToken, ServerCookies } from "lib/server"
 import { UserModel } from "models"
 import { COMMON_TEXTS } from "data"
 import { SALT_ROUNDS } from "utils"
@@ -46,7 +42,6 @@ export async function PUT(
 			)
 		}
 
-		// Ensure user can only edit their own account
 		if (decodedToken.userId !== id) {
 			return NextResponse.json(
 				{ message: "Not authorized to edit this account" },

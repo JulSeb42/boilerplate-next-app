@@ -12,7 +12,6 @@ import {
 	clsx,
 	toast,
 } from "@julseb-lib/react"
-// import { useModalOpen } from "context"
 import { cloudinaryService } from "api"
 import type { IImageUploader } from "./types"
 
@@ -28,8 +27,6 @@ export function ImageUploader({
 	uploaderClassName,
 	...rest
 }: IImageUploader) {
-	// const { setHasModalOpen } = useModalOpen()
-
 	const fileInputRef = useRef<HTMLInputElement>(null)
 
 	const [isOpen, setIsOpen] = useState(false)
@@ -66,7 +63,6 @@ export function ImageUploader({
 			return
 		}
 
-		// Show preview immediately while uploading
 		const reader = new FileReader()
 		reader.onload = e => {
 			const result = e.target?.result as string
@@ -74,14 +70,11 @@ export function ImageUploader({
 		}
 		reader.readAsDataURL(file)
 
-		// Upload to Cloudinary
 		const cloudinaryUrl = await uploadToCloudinary(file)
 		if (cloudinaryUrl) {
-			// Replace local preview with Cloudinary URL
 			setImage(cloudinaryUrl)
 			toast.success("Image uploaded successfully!")
 		} else {
-			// If upload failed, clear the preview
 			setImage(null as any)
 			if (fileInputRef.current) {
 				fileInputRef.current.value = ""
@@ -128,7 +121,6 @@ export function ImageUploader({
 						onClick={e => {
 							e.stopPropagation()
 							setIsOpen(true)
-							// setHasModalOpen(true)
 						}}
 						className={clsx(
 							"top-4 left-12 absolute bg-red-500 hover:bg-red-600 p-1 rounded-full text-white",
@@ -150,7 +142,6 @@ export function ImageUploader({
 							onClick={() => {
 								setImage("")
 								removeImage()
-								// setHasModalOpen(false)
 								setIsOpen(false)
 							}}
 							type="button"
@@ -160,10 +151,7 @@ export function ImageUploader({
 
 						<Button
 							variant="transparent"
-							onClick={() => {
-								// setHasModalOpen(false)
-								setIsOpen(false)
-							}}
+							onClick={() => setIsOpen(false)}
 							color="danger"
 						>
 							No, cancel

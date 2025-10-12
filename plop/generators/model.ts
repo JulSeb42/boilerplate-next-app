@@ -15,9 +15,6 @@ export default (plop: NodePlopAPI) => {
 				default: true,
 			},
 		],
-		// actions: [
-
-		// ],
 		actions: data => {
 			const actions: Array<ActionType> = [
 				"Creating a new Mongoose model",

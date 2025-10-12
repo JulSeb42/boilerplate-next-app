@@ -18,7 +18,6 @@ export async function PUT(
 			)
 		}
 
-		// Verify user authentication
 		const token = await ServerCookies.getAuthToken()
 
 		if (!token) {
@@ -39,7 +38,6 @@ export async function PUT(
 			)
 		}
 
-		// Ensure user can only edit their own account
 		if (decodedToken.userId !== id) {
 			return NextResponse.json(
 				{ message: "Not authorized to edit this account" },
@@ -49,7 +47,6 @@ export async function PUT(
 
 		const { fullName, avatar } = await req.json()
 
-		// Validate input
 		if (!fullName || fullName.trim().length === 0) {
 			return NextResponse.json(
 				{ message: "Full name is required" },
@@ -57,7 +54,6 @@ export async function PUT(
 			)
 		}
 
-		// Update user in database
 		const updatedUser = await UserModel.findByIdAndUpdate(
 			id,
 			{
@@ -65,9 +61,9 @@ export async function PUT(
 				...(avatar && { avatar }),
 			},
 			{
-				new: true, // Return updated document
+				new: true,
 				runValidators: true,
-				select: "-password -resetToken -verifyToken", // Exclude sensitive fields
+				select: "-password -resetToken -verifyToken",
 			},
 		)
 
