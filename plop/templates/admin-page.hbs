@@ -1,15 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router"
+import type { Metadata } from "next"
 import { Text } from "@julseb-lib/react"
-import { Page } from "components"
+import { AdminPage } from "components"
 
-const Admin{{>pascalName}}: FC = () => {
-	return (
-		<Page title="{{ title }}" type="{{ type }}">
-			<Text tag="h1">{{ title }}</Text>
-        </Page>
-	)
+export const metadata: Metadata = {
+	title: "{{ title }}",
 }
 
-export const Route = createFileRoute("/admin/{{>kebabName}}")({
-	component: Admin{{>pascalName}},
-})
+export default{{#if async}} async{{/if}} function Admin{{>pascalName}}() {
+	return (
+		<AdminPage>
+			<Text tag="h1">{{ title }}</Text>
+		</AdminPage>
+	)
+}

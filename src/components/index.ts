@@ -4,4 +4,7 @@ export * from "./error-message"
 export * from "./user-card"
 export * from "./user-header"
 export * from "./image-uploader"
+export * from "./layouts/admin-page"
+export * from "./user-card-admin"
+export * from "./pagination"
 /* Prepend export - DO NOT REMOVE */

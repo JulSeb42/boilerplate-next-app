@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { connectDb } from "lib/server"
 
-export async function GET(req: Request) {
+export async function PUT(req: Request) {
 	await connectDb()
 
 	try {

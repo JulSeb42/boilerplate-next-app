@@ -1,10 +1,10 @@
 "use client"
 import { useState } from "react"
 import { redirect } from "next/navigation"
-import { toast, passwordRegex, Form, Input } from "@julseb-lib/react"
+import { Form, Input, toast, passwordRegex } from "@julseb-lib/react"
 import { ErrorMessage } from "components"
-import { userService } from "api"
 import { useAuth } from "context"
+import { userService } from "api"
 import { COMMON_TEXTS } from "data"
 import type { LibValidationStatus } from "@julseb-lib/react/types"
 import type { IErrorMessage } from "types"
@@ -69,7 +69,7 @@ export function EditPasswordForm() {
 				setUser(res.data.user)
 				toast.success("Your new password has been saved!")
 			})
-			.then(() => setTimeout(() => redirect("/my-account"), 300))
+			.then(() => setTimeout(() => redirect("/admin/my-account"), 300))
 			.catch(err => setErrorMessage(err.response.data.message))
 			.finally(() => setIsLoading(false))
 	}

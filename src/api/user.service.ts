@@ -18,12 +18,16 @@ const generateRoute = (
 
 class UserService {
 	allUsers = async (
-		page: number = 1,
+		page?: number,
 		limit: number = 12,
-	): ApiResponse<ResponseAllUsers> =>
-		await http.get(
-			`${generateRoute("ALL_USERS")}?page=${page}&limit=${limit}`,
-		)
+	): ApiResponse<ResponseAllUsers | Array<User>> => {
+		if (page)
+			return await http.get(
+				`${generateRoute("ALL_USERS")}?page=${page}&limit=${limit}`,
+			)
+
+		return await http.get(generateRoute("ALL_USERS"))
+	}
 
 	getUser = async (id: string): ApiResponse<User> =>
 		await http.get(generateRoute("USER", id))

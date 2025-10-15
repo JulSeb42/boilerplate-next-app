@@ -83,14 +83,6 @@ export function UsersList({ initialUsers, initialPagination }: IUsersList) {
 					{pagination.hasMore && (
 						<span id="load-more-sentinel" style={{ height: 1 }} />
 					)}
-
-					{/* {pagination.hasMore && (
-						<div style={{ textAlign: "center", marginTop: "20px" }}>
-							<Button onClick={loadMoreUsers}>
-								Load More Users
-							</Button>
-						</div>
-					)} */}
 				</>
 			) : (
 				<Text>No users yet.</Text>
