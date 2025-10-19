@@ -45,7 +45,7 @@ export default async function UserPage({
 	const user = await getUser(id)
 
 	return (
-		<Page type="none">
+		<Page type="all">
 			<UserHeader user={user} isPublic />
 		</Page>
 	)

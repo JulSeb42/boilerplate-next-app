@@ -4,7 +4,7 @@ import type { SERVER_PATHS } from "./server-paths"
 import type {
 	ApiResponse,
 	User,
-	ResponseAllUsers,
+	ResponseInfiniteUsers,
 	EditAccountFormData,
 	EditPasswordFormData,
 } from "types"
@@ -20,7 +20,7 @@ class UserService {
 	allUsers = async (
 		page?: number,
 		limit: number = 12,
-	): ApiResponse<ResponseAllUsers | Array<User>> => {
+	): ApiResponse<ResponseInfiniteUsers | Array<User>> => {
 		if (page)
 			return await http.get(
 				`${generateRoute("ALL_USERS")}?page=${page}&limit=${limit}`,

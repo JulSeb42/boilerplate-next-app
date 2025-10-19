@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<Page type="none">
+		<Page type="all">
 			<Text tag="h1">Home</Text>
 			<Greetings />
 		</Page>

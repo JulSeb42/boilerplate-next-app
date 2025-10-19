@@ -14,7 +14,7 @@ export type User = {
 	resetToken?: string
 }
 
-export type ResponseAllUsers = {
+export type ResponseInfiniteUsers = {
 	users: Array<User>
 	pagination: {
 		currentPage: number

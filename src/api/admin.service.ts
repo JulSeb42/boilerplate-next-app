@@ -1,7 +1,7 @@
 import { http } from "./http-common"
 import { generateServerRoute } from "utils"
 import type { SERVER_PATHS } from "./server-paths"
-import type { ApiResponse, User } from "types"
+import type { ApiResponse, User, NavLinkFormData } from "types"
 
 type PATHS = keyof typeof SERVER_PATHS.ADMIN
 
@@ -9,13 +9,17 @@ const generateRoute = (route: Exclude<PATHS, "ROOT">, id?: string) =>
 	generateServerRoute("ADMIN", route, id)
 
 class AdminService {
-	editUserRole = async (): ApiResponse<User> =>
-		await http.put(generateRoute("EDIT_USER_ROLE"))
+	navLink = async (data: NavLinkFormData) =>
+		await http.post(generateRoute("ADD_NAV_LINK"), data)
 
-	resetPassword = async (): ApiResponse<User> =>
-		await http.put(generateRoute("RESET_PASSWORD"))
+	editUserRole = async (id: string, data: {}): ApiResponse<User> =>
+		await http.put(generateRoute("EDIT_USER_ROLE", id), data)
 
-	deleteUser = async () => await http.delete(generateRoute("DELETE_USER"))
+	resetPassword = async (id: string): ApiResponse<User> =>
+		await http.put(generateRoute("RESET_PASSWORD", id))
+
+	deleteUser = async (id: string) =>
+		await http.delete(generateRoute("DELETE_USER", id))
 
 	/* Prepend route - DO NOT REMOVE */
 }

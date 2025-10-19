@@ -2,9 +2,9 @@
     Create API link
 */
 
+import "dotenv/config"
 import { axios } from "lib"
-
-const BASE_API_URL = `${process.env.NEXT_PUBLIC_URL}/api`
+import { BASE_API_URL } from "utils"
 
 export const http = axios.create({
 	baseURL: BASE_API_URL,

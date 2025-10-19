@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Verify() {
 	return (
-		<Page type="none">
+		<Page type="all">
 			<Text tag="h1">Verify your account</Text>
 			<VerifyPage />
 		</Page>
