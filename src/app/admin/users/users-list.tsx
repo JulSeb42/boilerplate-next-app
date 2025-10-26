@@ -6,12 +6,11 @@ import { UserCardAdmin, Pagination } from "components"
 import { UsersFilters, type UserFilter } from "./filters"
 import type { User } from "types"
 
-export function UsersList({ users }: IUsersList) {
+export function UsersList({ initialUsers }: IUsersList) {
 	const searchParams = useSearchParams()
 	const page = Number(searchParams.get("page") ?? 1)
 
-	const { paginatedData, totalPages } = usePaginatedData(users, page)
-
+	const [users, setUsers] = useState(initialUsers)
 	const [search, setSearch] = useState("")
 	const [filter, setFilter] = useState<UserFilter>("none")
 
@@ -25,7 +24,10 @@ export function UsersList({ users }: IUsersList) {
 
 	if (filter !== "none") {
 		filteredUsers = filteredUsers.filter(u => u.role === filter)
+		console.log({ filter })
 	}
+
+	const { paginatedData, totalPages } = usePaginatedData(filteredUsers, page)
 
 	return (
 		<>
@@ -41,7 +43,11 @@ export function UsersList({ users }: IUsersList) {
 					<>
 						<Grid cols={4} gap="sm">
 							{paginatedData.map(user => (
-								<UserCardAdmin user={user} key={user._id} />
+								<UserCardAdmin
+									user={user}
+									setUsers={setUsers}
+									key={user._id}
+								/>
 							))}
 						</Grid>
 					</>
@@ -58,5 +64,5 @@ export function UsersList({ users }: IUsersList) {
 }
 
 interface IUsersList {
-	users: Array<User>
+	initialUsers: Array<User>
 }

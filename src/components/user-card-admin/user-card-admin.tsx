@@ -3,9 +3,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { BiDotsHorizontalRounded } from "react-icons/bi"
 import {
-	clsx,
 	Image,
-	getInitials,
 	Dropdown,
 	ButtonIcon,
 	Text,
@@ -13,6 +11,8 @@ import {
 	Alert,
 	Button,
 	Flexbox,
+	getInitials,
+	clsx,
 	toast,
 } from "@julseb-lib/react"
 import { useAuth } from "context"
@@ -20,9 +20,8 @@ import { adminService } from "api"
 import type { LibDropdownItem } from "@julseb-lib/react/types"
 import type { IUserCardAdmin } from "./types"
 
-export function UserCardAdmin({ user }: IUserCardAdmin) {
+export function UserCardAdmin({ user, setUsers }: IUserCardAdmin) {
 	const { user: admin } = useAuth()
-	// const queryClient = useQueryClient()
 
 	const [currentUser, setCurrentUser] = useState(user)
 	const [isOpen, setIsOpen] = useState(false)
@@ -56,43 +55,52 @@ export function UserCardAdmin({ user }: IUserCardAdmin) {
 
 	const handleRole = () => {
 		const newRole = user.role === "admin" ? "user" : "admin"
-		// adminService
-		// 	.editUserRole(user._id, { role: newRole })
-		// 	.then(res => {
-		// 		setCurrentUser(res.data)
-		// 		toast.success(`${currentUser.fullName} is now ${newRole}`)
-		// 		setIsOpen(false)
-		// 		setIsRoleOpen(false)
-		// 	})
-		// 	.catch(err => {
-		// 		console.error(err)
-		// 		toast.error("An error occurred, check console")
-		// 	})
+
+		adminService
+			.editUserRole(user._id, { role: newRole })
+			.then(res => {
+				setCurrentUser(res.data)
+				toast.success(`${currentUser.fullName} is now ${newRole}`)
+			})
+			.catch(err => {
+				toast.error("An error occurred, check console")
+				console.error(err)
+			})
+			.finally(() => {
+				setIsOpen(false)
+				setIsRoleOpen(false)
+			})
 	}
 
 	const handleReset = () => {
-		// adminService
-		// 	.resetPassword(user._id)
-		// 	.then(res => toast.success(res.data.message))
-		// 	.catch(err => {
-		// 		toast.error("An error occurred, check console")
-		// 		console.error(err)
-		// 	})
-		// 	.finally(() => setIsResetOpen(false))
+		adminService
+			.resetPassword(currentUser._id)
+			.then(res => toast.success(res.data.message))
+			.catch(err => {
+				toast.error("An error occurred, check console")
+				console.error(err)
+			})
+			.finally(() => {
+				setIsOpen(false)
+				setIsResetOpen(false)
+			})
 	}
 
 	const handleDelete = () => {
-		// adminService
-		// 	.deleteUser(user._id)
-		// 	.then(res => {
-		// 		toast.success(res.data.message)
-		// 		queryClient.invalidateQueries({ queryKey: ["users"] })
-		// 	})
-		// 	.catch(err => {
-		// 		toast.error("An error occurred, check console")
-		// 		console.error(err)
-		// 	})
-		// 	.finally(() => setIsDeleteOpen(false))
+		adminService
+			.deleteUser(currentUser._id)
+			.then(res => {
+				toast.success(res.data.message)
+				setUsers(prev => prev.filter(u => u._id !== currentUser._id))
+			})
+			.catch(err => {
+				toast.error("An error occurred, check console")
+				console.error(err)
+			})
+			.finally(() => {
+				setIsDeleteOpen(false)
+				setIsOpen(false)
+			})
 	}
 
 	return (

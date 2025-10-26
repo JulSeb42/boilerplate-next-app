@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Text } from "@julseb-lib/react"
 import { Page } from "components"
 import { LoginForm } from "./login-form"
+import { DemoLogin } from "./demo-login"
 
 export const metadata: Metadata = {
 	title: "Login",
@@ -21,6 +22,8 @@ export default function Login() {
 			<Text>
 				You don't have an account? <Link href="/signup">Sign up.</Link>
 			</Text>
+
+			<DemoLogin />
 		</Page>
 	)
 }

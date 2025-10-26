@@ -22,7 +22,7 @@ export default async function AdminUsers() {
 	return (
 		<AdminPage>
 			<Text tag="h1">Users</Text>
-			<UsersList users={users} />
+			<UsersList initialUsers={users} />
 		</AdminPage>
 	)
 }

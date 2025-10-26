@@ -14,15 +14,17 @@ export type User = {
 	resetToken?: string
 }
 
+export type InfinitePagination = {
+	currentPage: number
+	totalPages: number
+	totalUsers: number
+	hasMore: boolean
+	limit: number
+}
+
 export type ResponseInfiniteUsers = {
 	users: Array<User>
-	pagination: {
-		currentPage: number
-		totalPages: number
-		totalUsers: number
-		hasMore: boolean
-		limit: number
-	}
+	pagination: InfinitePagination
 }
 
 export type EditAccountFormData = Pick<User, "fullName" | "avatar">

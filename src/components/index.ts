@@ -7,4 +7,5 @@ export * from "./image-uploader"
 export * from "./layouts/admin-page"
 export * from "./user-card-admin"
 export * from "./pagination"
+export * from "./not-found-page"
 /* Prepend export - DO NOT REMOVE */

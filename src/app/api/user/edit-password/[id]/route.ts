@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
+import { passwordRegex } from "@julseb-lib/utils"
 import { connectDb, verifyAccessToken, ServerCookies } from "lib/server"
 import { UserModel } from "models"
 import { COMMON_TEXTS } from "data"
 import { SALT_ROUNDS } from "utils"
-import { passwordRegex } from "@julseb-lib/utils"
 
 export async function PUT(
 	req: Request,

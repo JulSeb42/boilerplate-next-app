@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react"
 import { Text, Grid, deleteDuplicates } from "@julseb-lib/react"
 import { UserCard, UserCardSkeleton, ErrorMessage } from "components"
 import { userService } from "api"
-import type { User } from "types"
+import type { InfinitePagination, User } from "types"
 
 export function UsersList({ initialUsers, initialPagination }: IUsersList) {
 	const [users, setUsers] = useState<Array<User>>(initialUsers)
@@ -24,7 +24,10 @@ export function UsersList({ initialUsers, initialPagination }: IUsersList) {
 				const nextPage = pagination.currentPage + 1
 				const response = await userService.allUsers(nextPage, 12)
 				const { users: newUsers, pagination: newPagination } =
-					response.data
+					response.data as {
+						users: Array<User>
+						pagination: InfinitePagination
+					}
 
 				setUsers(prevUsers => {
 					const uniqueNewUsers = deleteDuplicates(newUsers)

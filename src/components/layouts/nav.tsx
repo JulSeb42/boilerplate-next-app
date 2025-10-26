@@ -13,10 +13,10 @@ export function Nav() {
 
 	const links = navLinks.filter(link =>
 		isLoggedIn && user?.role === "user"
-			? link.type === "protected" || link.type === "none"
+			? link.type === "protected" || link.type === "all"
 			: isLoggedIn && user?.role === "admin"
-				? link.type === "admin" || link.type === "none"
-				: link.type === "anon" || link.type === "none",
+				? link.type === "admin" || link.type === "all"
+				: link.type === "anon" || link.type === "all",
 	)
 
 	return (

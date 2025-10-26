@@ -6,8 +6,12 @@ export async function {{ method }}(req: Request) {
 	await connectDb()
 
 	try {
-
-	} catch(err) {
 		
+	} catch(err) {
+		console.error(err)
+		return NextResponse.json(
+			{ message: "An error occurred" },
+			{ status: 500 },
+		)
 	}
 }
