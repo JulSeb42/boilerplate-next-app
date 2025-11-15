@@ -78,5 +78,5 @@ UserModel.insertMany([...realUsers, ...fakeUsers])
 	})
 	.catch(err => console.error(err))
 
-// Run `pnpm tsx seed/seed.ts` from root folder
+// Run `pnpm tsx src/seed/seed-users.ts` from root folder
 // or `pnpm seed-users`
