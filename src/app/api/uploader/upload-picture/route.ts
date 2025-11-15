@@ -66,7 +66,7 @@ export async function PUT(req: Request) {
 				.upload_stream(
 					{
 						resource_type: "auto",
-						folder: "julseb-lib-fullstack",
+						folder: "julseb-lib-next",
 						allowed_formats: [
 							"jpg",
 							"jpeg",
