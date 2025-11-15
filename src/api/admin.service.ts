@@ -17,6 +17,12 @@ class AdminService {
 	navLink = async (data: NavLinkFormData) =>
 		await http.post(generateRoute("ADD_NAV_LINK"), data)
 
+	updateNavLinks = async (data: Array<NavLinkFormData>) =>
+		await http.put(generateRoute("UPDATE_NAV_LINKS"), { navLinks: data })
+
+	deleteNavLink = async (id: string) =>
+		await http.delete(generateRoute("DELETE_NAV_LINK", id))
+
 	editUserRole = async (
 		id: string,
 		data: EditUserRoleFormData,

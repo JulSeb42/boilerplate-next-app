@@ -34,7 +34,6 @@ export const SERVER_PATHS = {
 	},
 	ADMIN: {
 		ROOT: SERVER_PATHS_ROOT.ADMIN,
-		ADD_NAV_LINK: "/add-nav-link", // POST
 		EDIT_USER_ROLE: (id = ":id") => `/edit-user-role/${id}`, // PUT
 		RESET_PASSWORD: (id = ":id") => `/reset-password/${id}`, // PUT
 		DELETE_USER: (id = ":id") => `/delete-user/${id}`, // DELETE

@@ -7,7 +7,7 @@ import {
 } from "react-icons/bi"
 import type { PageType } from "types"
 
-type NavLink = {
+export type NavLink = {
 	title: string
 	href: string
 	type: PageType
