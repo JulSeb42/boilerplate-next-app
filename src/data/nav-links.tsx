@@ -1,10 +1,4 @@
-import {
-	BiLayout,
-	BiLinkExternal,
-	BiNavigation,
-	BiUser,
-	BiUserCircle,
-} from "react-icons/bi"
+import { BiLayout, BiLinkExternal, BiUser, BiUserCircle } from "react-icons/bi"
 import type { PageType } from "types"
 
 export type NavLink = {
@@ -29,7 +23,6 @@ type AdminNavLink = Omit<NavLink, "type"> & {
 export const adminNavLinks: Array<AdminNavLink> = [
 	{ title: "Admin", href: "/admin", icon: <BiLayout /> },
 	{ title: "Users", href: "/admin/users", icon: <BiUser /> },
-	{ title: "Nav", href: "/admin/nav", icon: <BiNavigation /> },
 ]
 
 export const adminNavBottomLinks: Array<AdminNavLink> = [
